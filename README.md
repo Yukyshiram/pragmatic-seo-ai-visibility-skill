@@ -1,408 +1,409 @@
 <div align="center">
 
-# Pragmatic SEO & AI Visibility Skill
+## 🎯 Pragmatic SEO AI Visibility Skill
 
-**A practical skill for technical SEO, content clarity, structured data, indexing readiness, and AI answer visibility.**
+**Production-ready SEO and AI visibility guidance for modern AI assistants. No hype, no folklore, no false guarantees.**
 
-Built for **Cursor**, **GitHub Copilot**, **Windsurf**, **Claude Code**, and other AI assistants.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node 18+](https://img.shields.io/badge/Node-18%2B-brightgreen.svg)](package.json)
+[![Multi-platform](https://img.shields.io/badge/Multi--platform-Cursor%20%7C%20Copilot%20%7C%20Windsurf%20%7C%20Claude-blue.svg)](#-platform-compatibility)
+
+A production-ready, multi-platform instruction package that helps developers and technical teams improve website discoverability, crawlability, structured data, and answer-engine readiness with clear confidence levels and zero false promises.
+
+[📖 Full Guide](#-operating-principles) · [⚡ Quick Start](#-quick-start) · [🔧 Install](#-installation) · [📋 Examples](#-usage-examples) · [⚖️ License](LICENSE)
 
 </div>
 
 ---
 
-## What is this?
+## What Is This?
 
-**Pragmatic SEO & AI Visibility Skill** is a structured instruction set for AI coding assistants.
+**Pragmatic SEO AI Visibility Skill** is a canonical skill file (`PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`) plus an installer (`bin/install.js`) that deploys it across multiple AI assistant ecosystems.
 
-It helps an assistant work on:
+It gives developers and technical teams:
 
-- technical SEO
-- content clarity
-- structured data
-- crawlability and indexability
-- search appearance
-- answer-engine readiness
+- ✅ Clear, implementable SEO guidance
+- ✅ Confidence labels: **Official**, **Recommended**, **Heuristic**
+- ✅ Realistic expectations: no ranking promises, no "AI Overview hacks"
+- ✅ Practical workflows for technical audits, schema decisions, and crawl/index diagnostics
+- ✅ Site-context awareness (SaaS vs ecommerce vs publisher vs local business)
 
-This skill is designed to be **practical**, **grounded**, and **non-magical**.
-
-It does **not** promise rankings.  
-It does **not** treat schema like magic.  
-It does **not** pretend "AI visibility" has guaranteed shortcuts.
-
-Instead, it gives an AI assistant a disciplined framework for improving how a site is understood by search engines and modern answer engines.
+**Supported ecosystems**
+- Cursor
+- GitHub Copilot
+- Windsurf
+- Claude
+- `AGENTS.md`-compatible workflows
 
 ---
 
-## Core philosophy
+## Why It Exists
 
-This project follows a few simple principles:
+Modern AI assistants can improve SEO workflows, but only if the guidance is clear, consistent, and grounded.
 
-- **Be practical, not theatrical**
-- **Prefer official guidance over SEO folklore**
-- **Separate official recommendations from heuristics**
-- **Prioritize high-impact fixes first**
-- **Avoid ranking guarantees**
-- **Adapt recommendations to the real site type**
-- **Treat AI visibility as clarity + extractability + citation readiness, not a hack**
+This project exists because:
 
----
-
-## What this skill helps with
-
-### Technical SEO
-
-- crawlability
-- indexability
-- robots.txt review
-- sitemap review
-- canonical checks
-- raw HTML visibility
-- duplication and status issues
-- URL hygiene
-- internal linking basics
-
-### Search appearance
-
-- title tags
-- meta descriptions
-- heading structure
-- Open Graph / social preview metadata
-- page-level clarity
-
-### Structured data
-
-- Organization
-- WebSite
-- WebPage
-- BreadcrumbList
-- Article / BlogPosting
-- Product
-- SoftwareApplication
-- FAQPage
-- HowTo
-- LocalBusiness
-- Person
-
-### Content quality
-
-- intent matching
-- introduction quality
-- topic coverage
-- cannibalization review
-- freshness review
-- answer-first formatting
-
-### AI visibility / answer readiness
-
-- direct-answer structures
-- extractable content blocks
-- descriptive headings
-- FAQ formatting
-- comparison tables
-- citation-friendly structure
-- consistent entity naming
+1. **SEO is full of folklore.** Official guidance often gets mixed with myths, shortcuts, and cargo-cult advice. This project separates them.
+2. **Not every recommendation fits every site.** A SaaS product, ecommerce store, and publisher site need different decisions.
+3. **Promises destroy trust.** This project does not guarantee rankings, citations, or AI Overview inclusion.
+4. **Consistency matters across tools.** Without a canonical source, instruction quality drifts across platforms and teams.
+5. **Developers need systems, not marketing.** This project is for people who care about source code, validation, and actual implementation.
 
 ---
 
-## What this skill is **not**
+## 🚀 Quick Start
 
-This skill is **not**:
+**Requirements:** Node.js 18+
 
-- a ranking guarantee system
-- a loophole list
-- a schema spam guide
-- an SEO myth collection
-- a replacement for strong content
-- a replacement for a strong product
-- a fake "GEO hack" package
+### Install everything
 
-This skill **is**:
-
-- a disciplined framework for improving discoverability, clarity, and readiness for modern search and answer engines
-
----
-
-## Supported workflows
-
-The skill supports multiple working styles depending on what the user needs.
-
-### 1. Quick Audit
-
-Use when the goal is speed.
-
-Outputs:
-
-- top issues
-- severity
-- likely impact
-- fastest wins
-
-### 2. Full Audit
-
-Use when the goal is a full review.
-
-Outputs:
-
-- technical audit
-- content audit
-- structured data audit
-- search appearance audit
-- AI visibility audit
-- prioritized roadmap
-
-### 3. Execution Support
-
-Use when the user already knows what they want changed.
-
-Outputs:
-
-- file-level changes
-- suggested diffs
-- implementation notes
-- validation steps
-
-### 4. Content Optimization
-
-Use for:
-
-- blog posts
-- landing pages
-- product pages
-- documentation pages
-- FAQ sections
-- comparison pages
-
-Outputs:
-
-- title / H1 improvements
-- intro rewrites
-- heading structures
-- schema suggestions
-- internal linking suggestions
-- answer-friendly formatting
-
----
-
-## Project structure
-
-```text
-pragmatic-seo-ai-visibility-skill/
-├── skill/
-│   └── PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
-├── examples/
-│   ├── cursor.mdc
-│   ├── copilot-instructions.md
-│   ├── windsurf.md
-│   └── CLAUDE.md
-├── bin/
-│   └── install.js
-├── README.md
-├── package.json
-├── LICENSE
-└── .gitignore
+```bash
+npx pragmatic-seo-ai-visibility-skill --everything
 ```
 
-## File roles
+Or run locally from source
 
-### skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```bash
+git clone https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill.git
+cd pragmatic-seo-ai-visibility-skill
 
-Canonical source of the skill.
+# View all options
+node bin/install.js --help
 
-### examples/
+# Install everything (rules/instructions + skill bundles)
+node bin/install.js --everything
 
-Platform-specific copies or starter files for different AI IDEs.
-
-### bin/install.js
-
-Future installer entry point.
+# Or install specific targets
+node bin/install.js --cursor --copilot --windsurf
+```
 
 ---
 
-## Manual installation
+## 📋 Platform Compatibility
 
-You can use the skill manually in any AI IDE that supports persistent instructions, rules, or context files.
+| Platform | Format | Target Flag | Output Location |
+|---|---|---|---|
+| Cursor | Rules | `--cursor` | `.cursor/rules/pragmatic-seo-ai-visibility.mdc` |
+| Cursor | Skill Bundle | `--cursor-skill` | `.cursor/skills/pragmatic-seo-ai-visibility/` |
+| GitHub Copilot | Repo Instructions | `--copilot` | `.github/copilot-instructions.md` |
+| GitHub Copilot | Path Instructions | `--copilot-path` | `.github/instructions/pragmatic-seo-ai-visibility.instructions.md` |
+| AGENTS.md | Agent Instructions | `--agents-md` | `AGENTS.md` |
+| Windsurf | Rules | `--windsurf` | `.windsurf/rules/pragmatic-seo-ai-visibility.md` |
+| Windsurf | Skill Bundle | `--windsurf-skill` | `.windsurf/skills/pragmatic-seo-ai-visibility/` |
+| Claude | Instructions | `--claude` | `CLAUDE.md` |
+| Claude | Skill Bundle | `--claude-skill` | `.claude/skills/pragmatic-seo-ai-visibility/` |
 
-### Cursor
+---
 
-Copy the contents of:
+## ⚡ Installation
 
+### Automated (recommended)
+
+```bash
+# Everything (rules/instructions + skill bundles)
+node bin/install.js --everything
+
+# Standard rules/instructions only
+node bin/install.js --all
+
+# Skill bundles only
+node bin/install.js --all-skills
+
+# Individual targets
+node bin/install.js --cursor
+node bin/install.js --copilot
+node bin/install.js --copilot-path
+node bin/install.js --agents-md
+node bin/install.js --windsurf
+node bin/install.js --claude
+
+# Skill bundles only
+node bin/install.js --cursor-skill
+node bin/install.js --windsurf-skill
+node bin/install.js --claude-skill
+
+# Overwrite existing outputs
+node bin/install.js --everything --force
+```
+
+### Manual installation
+
+Copy the canonical source file:
+
+```
+skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```
+
+into the desired destination:
+
+- Cursor rules: `.cursor/rules/pragmatic-seo-ai-visibility.mdc`
+- Cursor skills: `.cursor/skills/pragmatic-seo-ai-visibility/SKILL.md`
+- GitHub Copilot (repo): `.github/copilot-instructions.md`
+- GitHub Copilot (path): `.github/instructions/pragmatic-seo-ai-visibility.instructions.md`
+- AGENTS.md: `AGENTS.md`
+- Windsurf rules: `.windsurf/rules/pragmatic-seo-ai-visibility.md`
+- Windsurf skills: `.windsurf/skills/pragmatic-seo-ai-visibility/SKILL.md`
+- Claude instructions: `CLAUDE.md`
+- Claude skills: `.claude/skills/pragmatic-seo-ai-visibility/SKILL.md`
+
+For skill bundles, also include a `reference.md` file with a short usage summary.
+
+---
+
+## 📁 Repository Structure
+
+```
+pragmatic-seo-ai-visibility-skill/
+├── bin/
+│   └── install.js
+├── skill/
+│   └── PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+├── .github/
+│   └── workflows/
+├── package.json
+├── LICENSE
+└── README.md
+```
+
+Single source of truth:
 `skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`
 
-into:
-
-`.cursor/rules/pragmatic-seo-ai-visibility.mdc`
-
-### GitHub Copilot
-
-Copy the contents into:
-
-`.github/copilot-instructions.md`
-
-### Windsurf
-
-Copy the contents into:
-
-`.windsurf/rules/pragmatic-seo-ai-visibility.md`
-
-### Claude Code
-
-Copy the contents into:
-
-`CLAUDE.md`
-
-### Any other AI assistant
-
-Paste the skill into the platform's equivalent of:
-
-- system prompt
-- rules file
-- instructions file
-- persistent context file
-- custom instructions panel
+All generated platform outputs are derived from this canonical file.
 
 ---
 
-## Installation status
+## 🎓 Design Principles
 
-At the moment, the skill is primarily intended for manual installation.
+This project is intentionally strict about credibility and usefulness.
 
-A future installer may automate copying the canonical skill file into IDE-specific locations through:
+### 1. No False Promises
 
-`npx pragmatic-seo-ai-visibility-skill`
+- No guaranteed rankings
+- No guaranteed AI citations
+- No fake certainty
+- No "SEO magic"
 
-The current `bin/install.js` is only a starting placeholder.
+### 2. Official First, Heuristic Last
 
----
+Every recommendation should be framed as one of:
 
-## Why this project exists
+- **Official** — directly supported by official documentation
+- **Recommended** — broadly accepted best practice
+- **Heuristic** — useful, but not guaranteed by official sources
 
-A lot of SEO and "GEO" material online is either:
+### 3. Site Context Matters
 
-- too vague
-- too rigid
-- too myth-driven
-- too salesy
-- too bureaucratic
-- too obsessed with fake certainty
+Guidance should adapt to the actual site type:
 
-This project aims to be a cleaner alternative.
+- SaaS
+- Ecommerce
+- Blog / publisher
+- Portfolio
+- Documentation
+- Local business
+- Landing page / web app
 
-Instead of pretending there is a universal recipe for rankings or AI citations, this skill tries to help assistants reason about:
+### 4. Schema Is Not Magic
 
-- crawlability
-- indexability
-- page clarity
-- structured relevance
-- content usefulness
-- answer extractability
-- validation after changes
+- Structured data helps machines understand content
+- It may support eligibility for richer appearances
+- It does not guarantee ranking or citation
+- It must reflect visible page reality
 
----
+### 5. Smallest Meaningful Fix First
 
-## Design goals
+Start with:
 
-This repository is built around these goals:
+- crawl and index issues
+- broken metadata
+- canonical and robots problems
+- clear technical blockers
 
-- pragmatic
-- clear
-- portable
-- easy to reuse
-- honest about uncertainty
-- useful for real implementation work
-
----
-
-## Recommended usage pattern
-
-A good default usage flow is:
-
-- identify the site type
-- determine the main goal
-- review crawl/index fundamentals
-- review page structure and metadata
-- review performance issues if relevant
-- review structured data only where it matches visible content
-- improve content clarity and answer structure
-- validate the changes
+Only then move into broader content or authority work.
 
 ---
 
-## Good fit for
+## ⚙️ Installer Behavior
 
-This skill is especially useful for:
+The installer:
 
-- SaaS websites
-- product landing pages
-- blogs and content sites
-- documentation websites
-- ecommerce product/category pages
-- portfolios
-- local business websites
+- reads the canonical skill from `skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`
+- creates missing directories automatically
+- installs selected targets
+- generates skill bundles with `SKILL.md` and `reference.md`
+- skips existing files unless `--force` is used
 
----
+### Why this matters
 
-## Notable principles inside the skill
-
-The skill intentionally separates recommendation types into:
-
-- Official: directly grounded in official documentation
-- Recommended: strong best practice
-- Heuristic: useful but not guaranteed
-
-This helps keep the assistant honest and prevents overclaiming.
+- **Single source of truth** — update once, deploy everywhere
+- **Consistency across tools** — less drift across teams
+- **Low friction** — one command can update multiple environments
+- **Safer defaults** — existing files are preserved unless explicitly overwritten
 
 ---
 
-## Current version
+## 📖 Usage Examples
 
-Version: 0.1.0
+### Installer commands
 
-This is an early public version focused on:
+```bash
+# Show help
+node bin/install.js --help
 
-- solid structure
-- realistic SEO framing
-- AI visibility without hype
-- portability across IDEs
+# Install everything
+node bin/install.js --everything
+
+# Install all standard instructions
+node bin/install.js --all
+
+# Install all skill bundles
+node bin/install.js --all-skills
+
+# Platform-specific installs
+node bin/install.js --cursor
+node bin/install.js --copilot
+node bin/install.js --copilot-path
+node bin/install.js --agents-md
+node bin/install.js --windsurf
+node bin/install.js --claude
+
+# Skill bundles only
+node bin/install.js --cursor-skill
+node bin/install.js --windsurf-skill
+node bin/install.js --claude-skill
+
+# Force overwrite
+node bin/install.js --everything --force
+```
+
+### Platform-specific usage ideas
+
+#### Cursor
+
+In Cursor chat or Composer:
+
+```
+/create-skill Help me create this skill for Cursor: https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/blob/main/skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```
+
+#### GitHub Copilot
+
+In Copilot Chat:
+
+```
+Help me adapt this canonical skill into GitHub Copilot repository instructions using this source:
+https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/blob/main/skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+
+Also generate path-specific instructions for /docs and /blog.
+```
+
+#### Windsurf
+
+```
+Adapt this canonical skill into a Windsurf skill bundle with SKILL.md and reference.md:
+https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/blob/main/skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```
+
+#### Claude Code
+
+```
+Adapt this canonical skill into Claude Code instructions and generate a .claude/skills/pragmatic-seo-ai-visibility/SKILL.md bundle from:
+https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/blob/main/skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```
 
 ---
 
-## Roadmap
+## 💡 Ideas & Advanced Usage
 
-Planned improvements include:
+### Use the canonical file as the master source
 
-- better IDE-specific example files
-- a real installer in `bin/install.js`
-- validation scripts
-- richer README examples
-- optional templates for common site types
-- versioned release flow
+Edit:
+
+```
+skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+```
+
+Then redeploy everywhere:
+
+```bash
+node bin/install.js --everything --force
+```
+
+### Keep platform instructions synchronized
+
+Use the installer to maintain the same guidance across:
+
+- Cursor
+- Copilot
+- Windsurf
+- Claude
+- AGENTS.md-based workflows
+
+### Extend the project with validation and release automation
+
+The current structure already supports:
+
+- validation workflows
+- installer-based regeneration
+- future release automation
+- future npm publishing improvements
 
 ---
 
-## Contributing
+## 🎯 Operating Principles
 
-Contributions are welcome.
+This skill emphasizes:
 
-Useful contributions would include:
+- Be practical, not theatrical
+- Prefer official guidance
+- Separate confidence levels clearly
+- Prioritize impact and effort
+- Never promise rankings
+- Do not treat schema as magic
+- Use the right mode for the task
 
-- better IDE-specific install targets
-- safer installer logic
-- validation scripts
-- clearer examples
-- better platform-specific adaptations
-- improvements to the skill wording without making it hype-driven
-
-Please try to keep changes aligned with the project philosophy:
-
-- no SEO myths
-- no ranking guarantees
-- no fake certainty
-- no deceptive tactics
+For the full framework, see [skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md](skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md).
 
 ---
 
-## License
+## 📊 Roadmap
 
-MIT
+- ✅ Canonical skill file
+- ✅ Multi-platform installer
+- ✅ Cursor, Copilot, Windsurf, Claude, and AGENTS.md support
+- ✅ Validation workflow support
+- ⏳ Example implementations per site type
+- ⏳ Team onboarding guide
+- ⏳ Stronger installer edge-case coverage
+- ⏳ Optional publishing/release automation
 
-See `LICENSE` for details.
+---
+
+## ⚖️ License
+
+MIT © [Im_JVallejo](https://github.com/Yukyshiram)
+
+See [LICENSE](LICENSE) for details.
+
+---
+
+## 🤝 Contributing
+
+This is a focused and opinionated project.
+
+Good contributions should:
+
+- strengthen official or recommended guidance
+- include source-backed reasoning where relevant
+- preserve the no-hype philosophy
+- consider impact across multiple platforms, not just one
+
+Questions or suggestions are welcome through [issues](https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/issues).
+
+---
+
+## 👤 Developed by
+
+[Im_JVallejo](https://github.com/Yukyshiram) — pragmatic guidance for technical teams who care about real impact, not hype.
+
+---
