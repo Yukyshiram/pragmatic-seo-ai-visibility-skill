@@ -1,69 +1,74 @@
 name: Validate
 
 on:
-    push:
-        branches: ["main"]
-    pull_request:
-        branches: ["main"]
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-    validate:
-        runs-on: ubuntu-latest
+  validate:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-            - name: Check package.json exists
-              run: test -f package.json
+      - name: Verify Node.js is available
+        run: node --version
 
-            - name: Check canonical skill file exists
-              run: test -f skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+      - name: Check package.json exists
+        run: test -f package.json
 
-            - name: Check canonical skill file is not empty
-              run: test -s skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+      - name: Check canonical skill file exists and is not empty
+        run: test -s skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
 
-            - name: Check README exists
-              run: test -f README.md
+      - name: Check canonical skill file is well-formed
+        run: grep -q "## PART 1 — OPERATING PRINCIPLES" skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
 
-            - name: Run installer help
-              run: node bin/install.js --help
+      - name: Check README exists
+        run: test -f README.md
 
-            - name: Run installer everything
-              run: node bin/install.js --everything
+      - name: Run installer help
+        run: node bin/install.js --help
 
-            - name: Verify standard install targets
-              run: |
-                  test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
-                  test -f .github/copilot-instructions.md
-                  test -f .github/instructions/pragmatic-seo-ai-visibility.instructions.md
-                  test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
-                  test -f CLAUDE.md
+      - name: Run installer everything
+        run: node bin/install.js --everything
 
-            - name: Verify skill bundle targets
-              run: |
-                  test -f .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
-                  test -f .cursor/skills/pragmatic-seo-ai-visibility/reference.md
-                  test -f .windsurf/skills/pragmatic-seo-ai-visibility/SKILL.md
-                  test -f .windsurf/skills/pragmatic-seo-ai-visibility/reference.md
-                  test -f .claude/skills/pragmatic-seo-ai-visibility/SKILL.md
-                  test -f .claude/skills/pragmatic-seo-ai-visibility/reference.md
+      - name: Verify instruction targets
+        run: |
+          test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
+          test -f .github/copilot-instructions.md
+          test -f .github/instructions/pragmatic-seo-ai-visibility.instructions.md
+          test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
+          test -f CLAUDE.md
+          test -f AGENTS.md
 
-            - name: Check generated skill bundle content
-              run: |
-                  grep -q "Pragmatic SEO & AI Visibility Skill" .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
-                  grep -q "Primary file" .cursor/skills/pragmatic-seo-ai-visibility/reference.md
+      - name: Verify skill bundle targets
+        run: |
+          test -f .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
+          test -f .cursor/skills/pragmatic-seo-ai-visibility/reference.md
+          test -f .windsurf/skills/pragmatic-seo-ai-visibility/SKILL.md
+          test -f .windsurf/skills/pragmatic-seo-ai-visibility/reference.md
+          test -f .claude/skills/pragmatic-seo-ai-visibility/SKILL.md
+          test -f .claude/skills/pragmatic-seo-ai-visibility/reference.md
 
-            - name: Verify standard install targets
-              run: |
-                  test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
-                  test -f .github/copilot-instructions.md
-                  test -f .github/instructions/pragmatic-seo-ai-visibility.instructions.md
-                  test -f AGENTS.md
-                  test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
-                  test -f CLAUDE.md
+      - name: Check skill bundle content across all targets
+        run: |
+          grep -q "Pragmatic SEO & AI Visibility Skill" .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
+          grep -q "Pragmatic SEO & AI Visibility Skill" .windsurf/skills/pragmatic-seo-ai-visibility/SKILL.md
+          grep -q "Pragmatic SEO & AI Visibility Skill" .claude/skills/pragmatic-seo-ai-visibility/SKILL.md
+          grep -q "Primary file" .cursor/skills/pragmatic-seo-ai-visibility/reference.md
+          grep -q "Primary file" .windsurf/skills/pragmatic-seo-ai-visibility/reference.md
+          grep -q "Primary file" .claude/skills/pragmatic-seo-ai-visibility/reference.md
+
+      - name: Verify --force overwrites without error
+        run: node bin/install.js --everything --force
+
+      - name: Verify --detect resolves targets
+        run: node bin/install.js --detect

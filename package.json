@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Pragmatic SEO and AI visibility skill for Cursor, Copilot, Windsurf, Claude, and other AI assistants.",
   "bin": {
-    "pragmatic-seo-ai-visibility-skill": "./bin/install.js"
+    "pragmatic-seo-ai-visibility-skill": "./bin/install.js",
+    "seo-skill": "./bin/install.js"
   },
   "repository": {
     "type": "git",

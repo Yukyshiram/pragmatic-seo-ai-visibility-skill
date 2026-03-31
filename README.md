@@ -10,7 +10,7 @@
 
 A production-ready, multi-platform instruction package that helps developers and technical teams improve website discoverability, crawlability, structured data, and answer-engine readiness with clear confidence levels and zero false promises.
 
-[📖 Full Guide](#-operating-principles) · [⚡ Quick Start](#-quick-start) · [🔧 Install](#-installation) · [📋 Examples](#-usage-examples) · [⚖️ License](LICENSE)
+[📖 Full Guide](#-operating-principles) · [⚡ Quick Start](#-quick-start) · [🔧 Install](#-installation) · [📋 Examples](#-platform-specific-usage) · [⚖️ License](LICENSE)
 
 </div>
 
@@ -55,14 +55,6 @@ This project exists because:
 
 **Requirements:** Node.js 18+
 
-### Install everything
-
-```bash
-npx pragmatic-seo-ai-visibility-skill --everything
-```
-
-Or run locally from source
-
 ```bash
 git clone https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill.git
 cd pragmatic-seo-ai-visibility-skill
@@ -73,7 +65,10 @@ node bin/install.js --help
 # Install everything (rules/instructions + skill bundles)
 node bin/install.js --everything
 
-# Or install specific targets
+# Let the installer detect what your project already uses
+node bin/install.js --detect
+
+# Install for specific platforms
 node bin/install.js --cursor --copilot --windsurf
 ```
 
@@ -97,32 +92,47 @@ node bin/install.js --cursor --copilot --windsurf
 
 ## ⚡ Installation
 
-### Automated (recommended)
+### All targets at once
 
 ```bash
-# Everything (rules/instructions + skill bundles)
+# Rules/instructions + skill bundles
 node bin/install.js --everything
 
-# Standard rules/instructions only
+# Rules/instructions only
 node bin/install.js --all
 
 # Skill bundles only
 node bin/install.js --all-skills
+```
 
-# Individual targets
+### Auto-detect existing tools
+
+If you are adding this to an existing project, `--detect` inspects the project structure and installs instruction files only for the platforms it finds:
+
+```bash
+node bin/install.js --detect
+
+# Combine with skill bundles if needed
+node bin/install.js --detect --all-skills
+```
+
+### Individual targets
+
+```bash
 node bin/install.js --cursor
 node bin/install.js --copilot
 node bin/install.js --copilot-path
 node bin/install.js --agents-md
 node bin/install.js --windsurf
 node bin/install.js --claude
-
-# Skill bundles only
 node bin/install.js --cursor-skill
 node bin/install.js --windsurf-skill
 node bin/install.js --claude-skill
+```
 
-# Overwrite existing outputs
+### Overwrite existing outputs
+
+```bash
 node bin/install.js --everything --force
 ```
 
@@ -157,16 +167,24 @@ pragmatic-seo-ai-visibility-skill/
 ├── bin/
 │   └── install.js
 ├── skill/
-│   └── PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+│   ├── PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+│   └── examples/
+│       ├── README.md
+│       ├── pragmatic-seo-saas/
+│       ├── pragmatic-seo-ecommerce/
+│       ├── pragmatic-seo-blog-publisher/
+│       └── pragmatic-seo-local-business/
 ├── .github/
 │   └── workflows/
+│       ├── validate.yml
+│       └── publish.yml
 ├── package.json
+├── PUBLISHING.md
 ├── LICENSE
 └── README.md
 ```
 
-Single source of truth:
-`skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`
+Single source of truth: `skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`
 
 All generated platform outputs are derived from this canonical file.
 
@@ -185,7 +203,7 @@ This project is intentionally strict about credibility and usefulness.
 
 ### 2. Official First, Heuristic Last
 
-Every recommendation should be framed as one of:
+Every recommendation is framed as one of:
 
 - **Official** — directly supported by official documentation
 - **Recommended** — broadly accepted best practice
@@ -193,7 +211,7 @@ Every recommendation should be framed as one of:
 
 ### 3. Site Context Matters
 
-Guidance should adapt to the actual site type:
+Guidance adapts to the actual site type:
 
 - SaaS
 - Ecommerce
@@ -212,14 +230,7 @@ Guidance should adapt to the actual site type:
 
 ### 5. Smallest Meaningful Fix First
 
-Start with:
-
-- crawl and index issues
-- broken metadata
-- canonical and robots problems
-- clear technical blockers
-
-Only then move into broader content or authority work.
+Start with crawl and index issues, broken metadata, and canonical problems. Only then move into broader content or authority work.
 
 ---
 
@@ -228,6 +239,7 @@ Only then move into broader content or authority work.
 The installer:
 
 - reads the canonical skill from `skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md`
+- validates that the skill file is present, non-empty, and well-formed before writing anything
 - creates missing directories automatically
 - installs selected targets
 - generates skill bundles with `SKILL.md` and `reference.md`
@@ -237,46 +249,12 @@ The installer:
 
 - **Single source of truth** — update once, deploy everywhere
 - **Consistency across tools** — less drift across teams
-- **Low friction** — one command can update multiple environments
+- **Low friction** — one command updates multiple environments
 - **Safer defaults** — existing files are preserved unless explicitly overwritten
 
 ---
 
-## 📖 Usage Examples
-
-### Installer commands
-
-```bash
-# Show help
-node bin/install.js --help
-
-# Install everything
-node bin/install.js --everything
-
-# Install all standard instructions
-node bin/install.js --all
-
-# Install all skill bundles
-node bin/install.js --all-skills
-
-# Platform-specific installs
-node bin/install.js --cursor
-node bin/install.js --copilot
-node bin/install.js --copilot-path
-node bin/install.js --agents-md
-node bin/install.js --windsurf
-node bin/install.js --claude
-
-# Skill bundles only
-node bin/install.js --cursor-skill
-node bin/install.js --windsurf-skill
-node bin/install.js --claude-skill
-
-# Force overwrite
-node bin/install.js --everything --force
-```
-
-### Platform-specific usage ideas
+## 📋 Platform-Specific Usage
 
 #### Cursor
 
@@ -313,11 +291,11 @@ https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/blob/main/skill/
 
 ---
 
-## 💡 Ideas & Advanced Usage
+## 💡 Advanced Usage
 
-### Use the canonical file as the master source
+### Keep all platforms synchronized
 
-Edit:
+Edit the canonical source:
 
 ```
 skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
@@ -329,24 +307,13 @@ Then redeploy everywhere:
 node bin/install.js --everything --force
 ```
 
-### Keep platform instructions synchronized
+### Add to an existing project without overwriting anything
 
-Use the installer to maintain the same guidance across:
+```bash
+node bin/install.js --detect
+```
 
-- Cursor
-- Copilot
-- Windsurf
-- Claude
-- AGENTS.md-based workflows
-
-### Extend the project with validation and release automation
-
-The current structure already supports:
-
-- validation workflows
-- installer-based regeneration
-- future release automation
-- future npm publishing improvements
+The installer will identify which platforms are present and install only the relevant instruction files, leaving everything else untouched.
 
 ---
 
@@ -369,13 +336,13 @@ For the full framework, see [skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md](skill/P
 ## 📊 Roadmap
 
 - ✅ Canonical skill file
-- ✅ Multi-platform installer
+- ✅ Multi-platform installer with validation
 - ✅ Cursor, Copilot, Windsurf, Claude, and AGENTS.md support
-- ✅ Validation workflow support
-- ⏳ Example implementations per site type
+- ✅ Auto-detect installer mode
+- ✅ Validation workflow
+- ✅ Example implementations per site type (SaaS, Ecommerce, Blog, Local Business)
+- ✅ Automated npm publishing via GitHub Actions
 - ⏳ Team onboarding guide
-- ⏳ Stronger installer edge-case coverage
-- ⏳ Optional publishing/release automation
 
 ---
 

@@ -11,6 +11,7 @@ const SKILL_SOURCE = path.join(
 );
 
 const SKILL_SLUG = "pragmatic-seo-ai-visibility";
+const SKILL_MARKER = "## PART 1 — OPERATING PRINCIPLES";
 
 const TARGETS = {
     cursor: path.join(ROOT, ".cursor", "rules", "pragmatic-seo-ai-visibility.mdc"),
@@ -54,10 +55,12 @@ Skill bundle targets:
   --claude-skill   Install Claude Code skill bundle
 
 Utility:
-  --all            Install standard instruction targets
+  --all            Install all standard instruction targets
   --all-skills     Install all skill bundle targets
   --everything     Install all instruction targets and all skill bundles
   --detect         Detect likely existing targets from project structure
+                   Note: --detect installs instruction files only.
+                   Add --all-skills or specific skill flags to also install bundles.
   --force          Overwrite existing files
   --help           Show this help message
 
@@ -68,20 +71,26 @@ Examples:
   node bin/install.js --windsurf-skill --claude-skill
   node bin/install.js --everything
   node bin/install.js --agents-md
+  node bin/install.js --detect
+  node bin/install.js --detect --all-skills
 `);
 }
 
 function readSkillFile() {
     if (!fs.existsSync(SKILL_SOURCE)) {
-        console.error(`❌ Skill file not found: ${SKILL_SOURCE}`);
-        process.exit(1);
+        throw new Error(`Skill file not found: ${SKILL_SOURCE}`);
     }
 
     const content = fs.readFileSync(SKILL_SOURCE, "utf8").trim();
 
     if (!content) {
-        console.error("❌ Skill file exists but is empty.");
-        process.exit(1);
+        throw new Error("Skill file exists but is empty.");
+    }
+
+    if (!content.includes(SKILL_MARKER)) {
+        throw new Error(
+            `Skill file appears malformed or incomplete. Expected marker not found: "${SKILL_MARKER}"`
+        );
     }
 
     return content;
@@ -217,6 +226,7 @@ function detectTargets() {
         dirExists(path.join(ROOT, ".github", "instructions"))
     ) {
         detected.push("copilot");
+        detected.push("copilotPath");
     }
 
     if (
@@ -263,16 +273,19 @@ function getSelectedTargets() {
 
     if (hasFlag("--detect")) {
         const detected = detectTargets();
-        const expanded = [];
 
-        for (const item of detected) {
-            if (item === "cursor") expanded.push("cursor");
-            if (item === "copilot") expanded.push("copilot");
-            if (item === "windsurf") expanded.push("windsurf");
-            if (item === "claude") expanded.push("claude");
+        // --detect resolves instruction targets only.
+        // Skill bundles must be requested explicitly via --all-skills or individual flags.
+        const skillTargets = [];
+        if (hasFlag("--all-skills")) {
+            skillTargets.push("cursorSkill", "windsurfSkill", "claudeSkill");
+        } else {
+            if (hasFlag("--cursor-skill")) skillTargets.push("cursorSkill");
+            if (hasFlag("--windsurf-skill")) skillTargets.push("windsurfSkill");
+            if (hasFlag("--claude-skill")) skillTargets.push("claudeSkill");
         }
 
-        return expanded;
+        return [...new Set([...detected, ...skillTargets])];
     }
 
     const selected = [];
@@ -389,12 +402,12 @@ function main() {
 
     if (selectedTargets.length === 0) {
         if (hasFlag("--detect")) {
-            console.log("⚠️ No detectable AI IDE targets were found in this project.");
+            console.log("⚠️  No detectable AI IDE targets were found in this project.");
             console.log(
                 "Tip: use --all, --all-skills, or pass a specific target like --cursor, --copilot, --windsurf, --claude, --cursor-skill, --windsurf-skill, or --claude-skill.\n"
             );
         } else {
-            console.log("⚠️ No install target selected.");
+            console.log("⚠️  No install target selected.");
             console.log(
                 "Tip: use --all, --all-skills, --everything, --detect, or pass a specific target.\n"
             );
@@ -404,7 +417,15 @@ function main() {
         process.exit(0);
     }
 
-    const rawSkillContent = readSkillFile();
+    let rawSkillContent;
+
+    try {
+        rawSkillContent = readSkillFile();
+    } catch (err) {
+        console.error(`❌ ${err.message}`);
+        process.exit(1);
+    }
+
     const results = [];
 
     for (const target of selectedTargets) {
