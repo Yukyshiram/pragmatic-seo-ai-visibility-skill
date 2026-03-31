@@ -1,0 +1,45 @@
+name: Validate
+
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Check package.json exists
+              run: test -f package.json
+
+            - name: Check skill file exists
+              run: test -f skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+
+            - name: Check skill file is not empty
+              run: test -s skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
+
+            - name: Check README exists
+              run: test -f README.md
+
+            - name: Run installer help
+              run: node bin/install.js --help
+
+            - name: Run installer all
+              run: node bin/install.js --all
+
+            - name: Verify generated targets
+              run: |
+                  test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
+                  test -f .github/copilot-instructions.md
+                  test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
+                  test -f CLAUDE.md
