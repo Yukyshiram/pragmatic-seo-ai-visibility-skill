@@ -5,5 +5,40 @@
   "bin": {
     "pragmatic-seo-ai-visibility-skill": "./bin/install.js"
   },
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill.git"
+  },
+  "homepage": "https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill#readme",
+  "bugs": {
+    "url": "https://github.com/Yukyshiram/pragmatic-seo-ai-visibility-skill/issues"
+  },
+  "keywords": [
+    "seo",
+    "technical-seo",
+    "ai-visibility",
+    "answer-engine",
+    "geo",
+    "cursor",
+    "github-copilot",
+    "windsurf",
+    "claude-code",
+    "schema",
+    "structured-data",
+    "search",
+    "search-engine-optimization",
+    "skl"
+  ],
+  "files": [
+    "bin",
+    "skill",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "author": "Im_JVallejo",
+  "engines": {
+    "node": ">=18"
+  }
 }
