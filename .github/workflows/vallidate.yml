@@ -22,10 +22,10 @@ jobs:
             - name: Check package.json exists
               run: test -f package.json
 
-            - name: Check skill file exists
+            - name: Check canonical skill file exists
               run: test -f skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
 
-            - name: Check skill file is not empty
+            - name: Check canonical skill file is not empty
               run: test -s skill/PRAGMATIC_SEO_AI_VISIBILITY_SKILL.md
 
             - name: Check README exists
@@ -34,12 +34,27 @@ jobs:
             - name: Run installer help
               run: node bin/install.js --help
 
-            - name: Run installer all
-              run: node bin/install.js --all
+            - name: Run installer everything
+              run: node bin/install.js --everything
 
-            - name: Verify generated targets
+            - name: Verify standard install targets
               run: |
                   test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
                   test -f .github/copilot-instructions.md
+                  test -f .github/instructions/pragmatic-seo-ai-visibility.instructions.md
                   test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
                   test -f CLAUDE.md
+
+            - name: Verify skill bundle targets
+              run: |
+                  test -f .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
+                  test -f .cursor/skills/pragmatic-seo-ai-visibility/reference.md
+                  test -f .windsurf/skills/pragmatic-seo-ai-visibility/SKILL.md
+                  test -f .windsurf/skills/pragmatic-seo-ai-visibility/reference.md
+                  test -f .claude/skills/pragmatic-seo-ai-visibility/SKILL.md
+                  test -f .claude/skills/pragmatic-seo-ai-visibility/reference.md
+                  
+            - name: Check generated skill bundle content
+              run: |
+                  grep -q "Pragmatic SEO & AI Visibility Skill" .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
+                  grep -q "Primary file" .cursor/skills/pragmatic-seo-ai-visibility/reference.md
