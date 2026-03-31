@@ -53,8 +53,17 @@ jobs:
                   test -f .windsurf/skills/pragmatic-seo-ai-visibility/reference.md
                   test -f .claude/skills/pragmatic-seo-ai-visibility/SKILL.md
                   test -f .claude/skills/pragmatic-seo-ai-visibility/reference.md
-                  
+
             - name: Check generated skill bundle content
               run: |
                   grep -q "Pragmatic SEO & AI Visibility Skill" .cursor/skills/pragmatic-seo-ai-visibility/SKILL.md
                   grep -q "Primary file" .cursor/skills/pragmatic-seo-ai-visibility/reference.md
+
+            - name: Verify standard install targets
+              run: |
+                  test -f .cursor/rules/pragmatic-seo-ai-visibility.mdc
+                  test -f .github/copilot-instructions.md
+                  test -f .github/instructions/pragmatic-seo-ai-visibility.instructions.md
+                  test -f AGENTS.md
+                  test -f .windsurf/rules/pragmatic-seo-ai-visibility.md
+                  test -f CLAUDE.md
